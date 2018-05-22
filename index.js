@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
     Voltaje panel: ${v_panel} <br>
     Voltaje baterias: ${v_baterias} <br>
   </center>`
-	res.send()
+	res.send(template)
 })
 
 app.post("/api", (req, res) => {
