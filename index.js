@@ -1,5 +1,9 @@
 const express = require("express")
+const bodyParser = require('body-parser');
 const app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 var v_carga = []
 var v_panel = []
@@ -14,9 +18,9 @@ app.get("/", (req, res) => {
 	</head>
 	<body>
 		<center>
-			Voltaje carga: ${v_carga.toString()} <br>
-			Voltaje panel: ${v_panel.toString()} <br>
-			Voltaje baterias: ${v_baterias.toString()} <br>
+			Voltaje carga: ${JSON.stringify(v_carga)} <br>
+			Voltaje panel: ${JSON.stringify(v_panel)} <br>
+			Voltaje baterias: ${JSON.stringify(v_baterias)} <br>
 		</center>
 
 		<canvas id="myChart" width="400" height="400"></canvas>
@@ -34,9 +38,9 @@ app.get("/", (req, res) => {
 })
 
 app.post("/api", (req, res) => {
-	v_carga.push(req.body.v_carga)
-	v_panel.push(req.body.v_panel)
-	v_baterias.push(req.body.v_baterias)
+	v_carga.push(req.headers.v_carga)
+	v_panel.push(req.headers.v_panel)
+	v_baterias.push(req.headers.v_baterias)
 	res.send("OK")
 })
 
