@@ -4,6 +4,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.set('view engine', 'ntl') // register the template engine
 
 var v_carga = []
 var v_panel = []
