@@ -1,17 +1,11 @@
 doctype html
 html
 	head
+		link(rel='stylesheet', type='text/css', href='app.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
 		title
 	body
 		center
-			| Voltaje carga: ${JSON.stringify(v_carga)} 
-			br
-			| 		Voltaje panel: ${JSON.stringify(v_panel)} 
-			br
-			| 		Voltaje baterias: ${JSON.stringify(v_baterias)} 
-			br
-		canvas#myChart(width='400', height='400')
-		script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js')
-		script(type='text/javascript', src='index.js')
-			
-
+			.chart-container
+				canvas#myChart
+		script(type='text/javascript', src='./app.js')
